@@ -1,4 +1,5 @@
 # hugo-static-tweet
+![GitHub repo size](https://img.shields.io/github/repo-size/ianmuchina/hugo-static-tweet?color=blue)
 
 > **Warning** Work in progress
 
