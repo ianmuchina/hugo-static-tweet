@@ -48,9 +48,10 @@
     {{/* Replace text with clickable link */}}
     {{ $text = replace $text $old $new }}
     {{/* Mark hashtag as seen */}}
-    {{/* TODO: Check this for other entities  */}}
+    {{/* TODO: Check this for other entities */}}
     {{ $seen_hashtag.Set .text "true" }}
   {{ end }}
 {{ end }}
+
 
 <p class="text">{{ $text | safeHTML -}}</p>

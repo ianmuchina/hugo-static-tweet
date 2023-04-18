@@ -1,10 +1,8 @@
-{{/*
-  Shortens large numbers to 1K, 1.1K , 1M etc 
-  eg: {{ partial tweet/_count "1200"}} returns 1.2K
-  
-  used to format like, rt count etc
-*/}}
+{{/* Shortens large numbers to 1K, 1.1K , 1M etc
+  eg: {{ partial tweet/_count "1200"
+}}
 
+returns 1.2K used to format like, rt count etc */}}
 {{ $count := . }}
 {{ $thousands := math.Floor (div $count 1_000) }}
 {{ $hundreds := math.Floor (mul .01 (mod $count 1_000)) }}

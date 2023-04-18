@@ -1,10 +1,10 @@
-{{/*  Styles  */}}
+{{/* Styles */}}
 {{ partial "tweet/_inject_css" . }}
 
 {{/* Arg Parsing */}}
 {{ $id := (.Get "id") }}
 
-{{/*  Fetch Remote Data  */}}
+{{/* Fetch Remote Data */}}
 {{ $cdn := partial "tweet/api_cdnTweet" (dict "id" $id) }}
 
 {{ with $cdn.id_str }}
