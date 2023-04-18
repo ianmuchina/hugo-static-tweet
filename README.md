@@ -2,7 +2,7 @@
 
 > **Warning** Work in progress
 
-Hugo theme component to display static tweets.
+Hugo theme component to display static tweets. 
 
 ## Installation
 TODO
@@ -13,7 +13,7 @@ Simple tweet
 ```handlebars
 {{<tweet id="20">}}
 ```
-Display a thread, requires a start-id and end-id. Does not support broken threads.
+Display a thread, requires an `end` id and optional `start` id. Does not support broken threads.
 ```handlebars
 {{<tw-thread end="1455953461300785159">}}
 ```
@@ -50,7 +50,7 @@ Display thread as blog content
 - [ ] Unified Cards
 - [ ] Broken threads
 
-## Running the example locally
+## Running the example site locally
 
 ```sh
 pnpm install
