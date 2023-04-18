@@ -1,0 +1,5 @@
+{{/*  Styles  */}}
+{{ partial "tweet/_inject_css" . }}
+
+{{/*  Content  */}}
+{{ partial "tweet/threadreader" (dict "id" (.Get "end") "start" (.Get "start")) }}

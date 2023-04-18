@@ -1,0 +1,23 @@
+<!-- Replace twitter url with expanded url  -->
+
+{{ with .ctx.card }}
+  {{/* Summary Card */}}
+  {{ if or (eq .name "summary") (eq .name "summary_large_image") }}
+    {{ partial "tweet/card_opengraph" . }}
+  {{ end }}
+
+  {{/* External Video: ie: Youtube, Vimeo */}}
+  {{ if eq .name "player" }}
+    {{ partial "tweet/card_player" . }}
+  {{ end }}
+
+  {{/* Spaces Card */}}
+  {{ if eq .name "3691233323:audiospace" }}
+    {{ partial "tweet/card_space" . }}
+  {{ end }}
+
+  {{/* Image ad with CTA */}}
+  {{ if eq .name "promo_image_convo" }}
+    {{ partial "tweet/card_promo_image_convo" . }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,105 @@
+/* stylelint-disable no-descending-specificity */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  border-radius: var(--tw-border-radius);
+  outline: solid 1px var(--tw-border);
+
+  img {
+    border-radius: unset;
+    display: block;
+    object-fit: cover;
+  }
+
+  picture {
+    object-position: center center;
+  }
+}
+
+// Specific Styles
+// 1 Image
+.gallery-1 {
+  display: block;
+
+  img {
+    border-radius: var(--tw-border-radius);
+    width: 100%;
+    height: auto;
+    max-height: 640px;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+// 2 Images
+.gallery-2 {
+  picture {
+    grid-row: span 2;
+
+    img {
+      aspect-ratio: 16/18;
+      grid-row: span 2;
+      height: 100%;
+    }
+  }
+}
+
+.gallery-3 {
+  img {
+    grid-row: span 1;
+    aspect-ratio: 16/9;
+  }
+
+  // Override above styles
+  picture:first-child {
+    grid-row: span 2;
+    height: 100%;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 16/18;
+    }
+  }
+}
+
+// 4 Images
+.gallery-4 {
+  picture {
+    max-height: 180px;
+
+    img {
+      height: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  }
+}
+
+.gallery-3 picture:first-child img,
+.gallery-2 picture:first-child img {
+  border-radius: var(--tw-border-radius) 0 0 var(--tw-border-radius);
+}
+
+.gallery-2 picture:last-child img {
+  border-radius: 0 var(--tw-border-radius) var(--tw-border-radius) 0;
+}
+
+.gallery-4 picture:first-child img {
+  border-radius: var(--tw-border-radius) 0 0 0;
+}
+
+.gallery-3 picture:nth-child(2) img,
+.gallery-4 picture:nth-child(2) img {
+  border-radius: 0 var(--tw-border-radius) 0 0;
+}
+
+.gallery-4 picture:nth-child(3) img {
+  border-radius: 0 0 0 var(--tw-border-radius);
+}
+
+.gallery-3 picture:last-child img,
+.gallery-4 picture:last-child img {
+  border-radius: 0 0 var(--tw-border-radius) 0;
+}

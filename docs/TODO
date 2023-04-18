@@ -1,0 +1,29 @@
+## Tasks
+
+- [ ] demo site
+- [ ] Document everything
+- [ ] Auto check for module updates via git releases
+- [ ] Setup json data playground to quickly test tweets
+- [ ] Properly handle data fetching errors
+- [ ] Threads
+- [ ] Allow customization of partials using hugo's cascade
+- [ ] Make it work with old hugo versions
+- [ ] Configurable image formats
+- [ ] Work for all non-ad tweets
+- [ ] Support extending the component
+- [ ] Support loading data from hugo `site.data`
+- [ ] Make examples with with some popular hugo themes
+- [ ] Write script to backup tweets to `data/tweets.json` and cdn assets to static/ incase api gets deleted
+- [ ] Monitor api for changes
+- [ ] Auto generate api urls for
+
+## Config
+
+- [ ] cssVars?
+- [ ] twitter chirp PUA glyphs?
+- [ ] LQIP images
+- [ ] Twemoji?
+
+## Links
+
+[fa0311/TwitterInternalAPIDocument](https://github.com/fa0311/TwitterInternalAPIDocument/blob/develop/docs/json/API.json) Unofficial API documentation

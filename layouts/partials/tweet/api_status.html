@@ -1,0 +1,17 @@
+{{ $headers := partial "tweet/api_guest" }}
+{{ $url := print "https://api.twitter.com/1.1/statuses/lookup.json?include_entities=1&id=" .id }}
+{{ $data := dict }}
+
+{{ with resources.GetRemote $url (dict "method" "get" "key" (print "v1-lookup" .id) "headers" $headers) }}
+  {{ with .Err }}
+    {{ warnf "%v" . }}
+  {{ else }}
+    {{ with .Content | transform.Unmarshal }}
+      {{ $data = index . 0 }}
+    {{ else }}
+      {{ warnf "Err %s" .ctx.id_str }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $data }}

@@ -1,0 +1,21 @@
+{{/*  
+  Fetches tweet json data from public syndication api
+  No auth required
+*/}}
+
+{{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id }}
+{{ $data := dict }}
+
+{{ with resources.GetRemote $url (dict "method" "get") }}
+  {{ with .Err }}
+    {{ warnf "%v" . }}
+  {{ else }}
+    {{ with .Content | transform.Unmarshal }}
+      {{ $data = . }}
+    {{ else }}
+      {{ warnf "Err %s" .ctx.id_str }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $data }}

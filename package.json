@@ -1,0 +1,28 @@
+{
+  "name": "hugo-tweet",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "hugo-extended": "^0.111.3",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^2.8.7",
+    "prettier-plugin-go-template": "^0.0.13",
+    "stylelint": "^15.4.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^8.0.0"
+  },
+  "scripts": {
+    "fmt": "prettier -w .",
+    "fmt-check": "prettier --check .",
+    "lint": "stylelint **/*.scss",
+    "dev": "hugo server --source exampleSite/ --themesDir ../..",
+    "build": "hugo",
+    "build-drafts": "hugo -D"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard-scss",
+      "stylelint-config-prettier-scss"
+    ]
+  }
+}

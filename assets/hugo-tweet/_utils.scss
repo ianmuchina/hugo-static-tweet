@@ -1,0 +1,27 @@
+.inline-svg {
+  display: inline-block;
+  vertical-align: middle;
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: currentcolor;
+    display: inline-block;
+  }
+}
+
+// Misc
+.hidden {
+  display: none;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+// Emoji
+.emoji img {
+  display: inline-block;
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: -20%;
+}

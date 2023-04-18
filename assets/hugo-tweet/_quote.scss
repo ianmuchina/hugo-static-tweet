@@ -1,0 +1,12 @@
+.tweet .quoted {
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.quoted .gallery {
+  border-top: solid 1px var(--tw-border);
+}
+
+.quoted .text {
+  padding: 2px;
+}

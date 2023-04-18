@@ -1,0 +1,19 @@
+{{/*  FIXME: Load themes from `head` */}}
+
+{{- if not ($.Page.Scratch.Get "tweet-count") -}}
+  {{/* Default */}}
+  {{- $sass := resources.Get "hugo-tweet/main.scss" -}}
+  {{- $styles := $sass | resources.ToCSS | resources.Fingerprint | -}}
+  <link rel="stylesheet" href="{{- $styles.Permalink -}}" integrity="{{- $styles.Data.Integrity -}}" />
+
+  {{/* Overrides */}}
+  {{ with resources.Get "hugo-tweet.css" }}
+    <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+
+  {{ with resources.Get "hugo-tweet.scss" }}
+    <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" />
+  {{ end }}
+{{- end -}}
+
+{{- $.Page.Scratch.Add "tweet-count" 1 -}}

@@ -1,0 +1,49 @@
+{{ $props := (dict "ctx" .ctx "data" .data) }}
+
+<article class="tweet {{ .mode }}" lang="{{ .ctx.lang }}">
+  <div class="profile-pic">
+    {{ partial "tweet/_profile-pic" $props }}
+  </div>
+
+  <div class="user-info">
+    {{ partial "tweet/_user-info" $props }}
+  </div>
+
+  <div class="content">
+    {{ with .ctx.card.name }}has_card {{ . }}{{ end }}
+    
+    {{- partial "tweet/body_text"     $props -}}
+    {{- partial "tweet/body_cards"    $props -}}
+    {{- partial "tweet/body_gallery"  $props -}}
+    {{- partial "tweet/body_poll"     $props -}}
+    {{- partial "tweet/body_video"    $props -}}
+    {{ with .ctx.quoted_tweet }}
+      {{ $props := (dict "ctx" . "quoted" true "data" .data "coTweetData" $.coTweetData) }}
+
+      <article class="tweet quoted" lang="{{ .lang }}">
+        <div class="profile-pic"> 
+          {{ partial "tweet/_profile-pic" $props }}
+        </div>
+
+        <div class="user-info">
+          {{ partial "tweet/_user-info" $props }}
+        </div>
+
+        <div class="content">
+          {{- partial "tweet/body_text"        $props -}}
+          {{- partial "tweet/body_gallery"     $props -}}
+          {{- partial "tweet/body_video"       $props -}}
+        </div>
+      </article>
+    {{ end }}
+
+    {{/* If is thread */}}
+    {{ if $.showButton }}
+      {{/* Likes,rts,  Link to tweet button */}}
+      {{ partial "tweet/footer_buttons" $props }}
+    {{ else }}
+      {{/* Date, likes, rts, comments & Link */}}
+      {{ partial "tweet/footer_meta" $props }}
+    {{ end }}
+  </div>
+</article>

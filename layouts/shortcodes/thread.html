@@ -1,0 +1,7 @@
+{{/*  Styles  */}}
+{{ partial "tweet/_inject_css" . }}
+
+{{/*  Content  */}}
+<div class="thread-wrapper">
+  {{ partial "tweet/thread" (dict "id" (.Get "end") "start" (.Get "start")) }}
+</div>

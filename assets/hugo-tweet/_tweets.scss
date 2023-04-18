@@ -1,0 +1,401 @@
+@import "variables";
+@import "quote";
+@import "cards";
+@import "polls";
+@import "spaces";
+@import "gallery";
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+// Layout (Macro)
+.tweet {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--profile-pic-width) auto;
+  grid-template-rows: auto auto;
+  gap: 0 8px;
+  outline: solid 1px var(--tw-border);
+  padding: 0.875rem;
+  border-radius: var(--tw-border-radius);
+  background-color: var(--tw-bg);
+  max-width: 640px;
+  margin: 1rem 0;
+
+  a,
+  a:visited {
+    color: unset;
+  }
+
+  .text {
+    color: var(--tw-text);
+    max-width: 80vw;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+
+    a {
+      color: var(--tw-link-text);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a.tw-url {
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: var(--tw-link-text);
+    }
+  }
+
+  p {
+    margin: unset;
+  }
+
+  // Link Colors
+
+  video {
+    width: 100%;
+    height: auto;
+    max-height: 640px;
+    object-fit: contain;
+    border-radius: var(--tw-border-radius);
+  }
+}
+
+.date-compact {
+  color: var(--tw-txt-2);
+}
+
+.tweet-buttons-thread {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  a {
+    --bg: var(--tw-bg);
+    --color: var(--tw-txt-2);
+
+    color: var(--color) !important;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 2px;
+  }
+
+  svg {
+    color: var(--color);
+    background-color: var(--bg);
+    padding: 8px;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.profile-pic {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  height: max-content;
+  position: relative;
+  z-index: 10;
+
+  picture {
+    display: contents;
+  }
+
+  img {
+    background-color: var(--tw-bg);
+    width: var(--profile-pic-width);
+    height: var(--profile-pic-width);
+    border-radius: 100%;
+    z-index: 20;
+    outline: solid 8px var(--tw-bg);
+  }
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-self: center;
+  font-size: 1rem;
+
+  .name {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    font-weight: 700;
+
+    // Position
+    grid-column: 1/2;
+
+    span {
+      color: var(--tw-text);
+    }
+  }
+
+  .scr-name {
+    color: var(--tw-txt-2);
+    display: block;
+    grid-column: 1/3;
+  }
+
+  .checkmark {
+    display: inline-flex;
+    color: var(--tw-checkmark);
+    height: max-content;
+  }
+
+  .checkmark > svg {
+    width: 1.1rem;
+    color: var(--tw-checkmark);
+    height: 1.1rem;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+  grid-column: span 2;
+
+  .meta {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    font-size: 1rem;
+    gap: 8px;
+    margin-left: -4px;
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    a {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    svg {
+      border-radius: 100%;
+      padding: 4px;
+      color: var(--tw-txt-2);
+    }
+  }
+}
+
+.thread-wrapper {
+  max-width: 640px;
+  margin: 1rem 0;
+  border: solid 1px var(--tw-border);
+
+  .tweet {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+.quoted {
+  --profile-pic-width: 1.2rem;
+
+  margin: unset;
+  align-items: start;
+  gap: 2px 6px;
+  padding: 10px;
+
+  .profile-pic {
+    height: 100%;
+    min-height: 2rem;
+  }
+
+  .profile-pic::before {
+    display: none;
+  }
+
+  .profile-pic img {
+    outline: none;
+  }
+
+  .user-info {
+    display: flex;
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  // Make date visible
+  .date-compact {
+    display: initial;
+  }
+
+  // Reduce font size
+  .text {
+    font-size: 1rem;
+  }
+
+  .content {
+    padding: unset;
+  }
+
+  .checkmark {
+    padding: unset;
+    padding: 0 3px;
+  }
+}
+
+.thread {
+  outline: unset;
+}
+
+.thread,
+.timeline {
+  .profile-pic {
+    height: 100%;
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+
+    picture {
+      display: contents;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+
+  .content {
+    font-size: 1rem;
+    grid-column: span 1;
+  }
+
+  .date-compact {
+    display: initial;
+  }
+
+  .meta,
+  .tw-date,
+  .tw-place {
+    display: none;
+  }
+}
+
+// Center the checkmark
+
+// Underline
+.user-info .name:hover {
+  text-decoration: underline;
+}
+
+.thread .text {
+  font-size: 1rem;
+}
+
+.text-secondary {
+  color: var(--tw-txt-2);
+}
+
+a.tw-date,
+a.tw-place {
+  font-size: 1rem;
+  color: var(--tw-txt-2) !important;
+  text-decoration: none;
+}
+
+a.tw-date:hover,
+a.tw-place:hover {
+  text-decoration: underline;
+}
+
+// Likes
+.meta a.link,
+.meta a.likes {
+  color: var(--tw-txt-2);
+}
+
+a.likes:hover {
+  color: var(--tw-likes-text-hover);
+
+  svg {
+    background-color: var(--tw-likes-bg-hover);
+    color: var(--tw-likes-text-hover);
+  }
+}
+
+a.link:hover {
+  color: var(--tw-link-text-hover);
+
+  svg {
+    color: var(--tw-link-text-hover);
+    background-color: var(--tw-link-bg-hover);
+  }
+}
+
+.thread .quoted {
+  .content {
+    grid-column: span 2;
+  }
+}
+
+.thread .profile-pic::before {
+  background: var(--tw-thread-line);
+  content: "";
+  position: absolute;
+  min-width: 2px;
+  border-radius: 0;
+  left: 50%;
+  right: 50%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.thread-wrapper :not(.tweet:last-child).profile-pic::before {
+  top: -16px;
+  bottom: -16px;
+}
+
+.thread-wrapper .tweet:first-child .profile-pic::before {
+  top: 0;
+  bottom: -14px;
+}
+
+.thread-wrapper .tweet:last-child .profile-pic::before {
+  top: -14px;
+  height: 20px;
+}
+
+.focus .date-compact {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .user-info .name span {
+    flex: 1;
+    max-width: 20ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tweet .date-compact {
+    display: none;
+  }
+}
+
+.name-container {
+  display: flex;
+  gap: 2px;
+}

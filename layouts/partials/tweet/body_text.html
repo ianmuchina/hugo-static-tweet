@@ -1,0 +1,56 @@
+{{/* TODO: Use Entities instead of string replacement */}}
+{{ $seen_hashtag := newScratch }}
+{{ $text := .ctx.text }}
+
+{{/* Remove Links to Media */}}
+{{ range .ctx.entities.media }}
+  {{ $text = replace $text .url "" }}
+{{ end }}
+
+{{/* Urls */}}
+{{ range .ctx.entities.urls }}
+  {{ $new := printf "<a target='_blank' rel='noopener noreferrer' href='%s'>%s</a>" .expanded_url .display_url }}
+
+  {{/* Remove link to quote tweet */}}
+  {{ if in .expanded_url $.ctx.quoted_tweet.id_str }}
+    {{ $new = "" }}
+  {{ end }}
+
+  {{/* Remove link to twitter space */}}
+  {{ if (in .expanded_url $.ctx.card.binding_values.id.string_value) }}
+    {{ $new = "" }}
+  {{ end }}
+
+  {{ $text = replace $text .url $new }}
+{{ end }}
+
+{{/* Mentions */}}
+{{ range .ctx.entities.user_mentions }}
+  {{ $old := (slicestr $.ctx.text (index .indices 0) (index .indices 1)) }}
+  {{ $new := printf "<a target='_blank' rel='noopener noreferrer' href='https://twitter.com/intent/user?user_id=%s'>%s</a>" .id_str $old }}
+  {{ $text = replace $text $old $new }}
+{{ end }}
+
+{{/* 4. Symbols/Cashflags */}}
+{{ range .ctx.entities.symbols }}
+  {{ $old := (slicestr $.ctx.text (index .indices 0) (index .indices 1)) }}
+  {{ $new := printf "<a target='_blank' rel='noopener noreferrer' href='https://twitter.com/search?q=%s'>%s</a>" $old $old }}
+  {{ $text = replace $text $old $new }}
+{{ end }}
+
+{{/* Hashtags */}}
+{{ range .ctx.entities.hashtags }}
+  {{ if not ($seen_hashtag.Get .text) }}
+    {{ $hashflag_markup := "" }}
+    {{ $old := (slicestr $.ctx.text (index .indices 0) (index .indices 1)) }}
+    {{/* Make hashtag Markup */}}
+    {{ $new := printf "<a target='_blank' rel='noopener noreferrer' href='https://twitter.com/hashtag/%s'>#%s</a> %s" .text .text $hashflag_markup }}
+    {{/* Replace text with clickable link */}}
+    {{ $text = replace $text $old $new }}
+    {{/* Mark hashtag as seen */}}
+    {{/* TODO: Check this for other entities  */}}
+    {{ $seen_hashtag.Set .text "true" }}
+  {{ end }}
+{{ end }}
+
+<p class="text">{{ $text | safeHTML -}}</p>

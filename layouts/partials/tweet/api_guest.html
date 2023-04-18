@@ -1,0 +1,18 @@
+{{/* 
+  returns headers that can be used to make requests to the graphql or v1 api 
+  Guest token Resets every hour
+  Run `make clean` to reset token 
+*/}}
+
+{{ $bearer := "AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs=1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA" }}
+{{ $url := "https://api.twitter.com/1.1/guest/activate.json" }}
+{{ $cacheKey := print $url (now.Format "2006-01-02-15") }}
+{{ $headers := dict "Authorization" (print "Bearer " $bearer) }}
+{{ $response := resources.GetRemote $url (dict "method" "post" "key" $cacheKey "headers"  $headers) }}
+{{ $json := $response.Content | transform.Unmarshal }}
+{{ $token := index $json "guest_token" }}
+{{ $headers := (dict
+  "Authorization" (printf "Bearer %s" $bearer)
+  "X-Guest-Token" (printf "%v" $token))
+}}
+{{ return $headers }}

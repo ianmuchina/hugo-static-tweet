@@ -1,0 +1,49 @@
+{{/* 
+  Downloads an image from a url and creates variants based on the formats value.
+  Falls back to the remote image if resource is unavailable
+
+  Params
+  ======
+  - class:    Added to <img> class
+  - url:      Remote url to download
+  - loading:  loading attribute value
+  - filename: base filename without extension
+  - formats:  Slice containing formats to compress to
+  - width:    image width
+  - height:   image height
+  - alt:      image alt text
+*/}}
+
+<picture>
+  {{ $original := "" }}
+  {{/* Download Image */}}
+  {{- with resources.GetRemote .url -}}
+    {{ $src := . | resources.Copy (print $.filename "." .MediaType.SubType) }}
+    {{- with .Err -}}
+      {{/* Log Error if 404 */}}
+      {{/* Will fall back to remote url */}}
+      {{- warnf "%v" . -}}
+    {{- else -}}
+      {{ range $.formats }}
+        {{ $resized := $src.Resize .options | resources.Copy (print $.filename .extension) }}
+        <source srcset="{{ $resized.RelPermalink }}" type="{{ $resized.MediaType }}" />
+      {{ end }}
+
+      {{/* Original Image */}}
+      {{ $original = $src.RelPermalink }}
+    {{- end -}}
+  {{- end -}}
+  {{/* Fallback to Remote  Image + sizes */}}
+  <img
+    class="pic {{ .class }}"
+    src="{{ .url }}"
+    loading="{{ .loading }}"
+    alt="{{ .alt }}"
+    width="{{ .width }}"
+    height="{{ .height }}"
+    data-source_url="{{ .url }}"
+    data-zoom-src="{{ $original }}"
+    data-full_size="{{ $original }}"
+    style="aspect-ratio: {{ .width }}/{{ .height }}"
+  />
+</picture>

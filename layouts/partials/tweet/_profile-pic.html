@@ -1,0 +1,31 @@
+{{/* Display profile picture */}}
+{{ with .ctx }}
+  {{/* Use Original Image */}}
+  {{ $url := replace .user.profile_image_url_https "_normal" "" }}
+  {{/* Generate Filename */}}
+  {{ $filename := replace $url "https://pbs.twimg.com/profile_images/" "" }}
+  {{ $filename := index (split $filename ".") 0 }}
+  {{ $filename := replace $filename "/" "_" }}
+  {{ $filename := print "/twitter/media/profile-photos/" $filename }}
+
+  {{/* Sizes To resize to */}}
+  {{ $formats := (slice (dict "options" "100x webp q75" "extension" ".webp" )) }}
+
+  {{/* Use smaller size on quote tweets */}}
+  {{ if $.quoted }}
+    {{ $formats = (slice (dict "options"  "50x webp q75" "extension" ".webp")) }}
+  {{ end }}
+
+  {{/* prettier-ignore */}}
+  {{- partial "tweet/_image"
+    (dict
+    "formats"  $formats
+    "url"      $url
+    "filename" $filename
+    "loading"  "lazy"
+    "width"    45
+    "height"   45
+    "class"    ""
+    "alt"      "" )
+  -}}
+{{ end }}

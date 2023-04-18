@@ -1,0 +1,74 @@
+{{/* Initialize variables */}}
+{{ $class := "" }}
+
+{{/*  Get Real Url instead of t.co shortener url  */}}
+{{ $url := .binding_values.card_url.string_value }}
+{{ range $.ctx.entities.urls }}
+  {{ if (eq $url .url) }}
+    {{ $url = .expanded_url }}
+  {{ end }}
+{{ end }}
+
+{{ $formats := slice }}
+{{/* Card Is Large Image with valid image source */}}
+{{ if and  (eq .name "summary_large_image") .binding_values.thumbnail_image_large }}
+  {{ $class = "card card-large" }}
+  {{ $formats = (slice (dict "options"  "x320 webp q75" "extension" ".webp" )) }}
+{{ else }}
+  {{/* Small Cards are square & 140px */}}
+  {{ $class = "card card-small" }}
+  {{ $formats = (slice (dict "options"  "140x webp q75" "extension" ".webp" ) ) }}
+{{ end }}
+
+<section class="{{ $class }}">
+  {{/* Select Image */}}
+  {{ $img := .binding_values.thumbnail_image_original.image_value }}
+  {{ if .binding_values.player_image_x_large }}
+    {{ $img = .binding_values.player_image_large.image_value }}
+  {{ end }}
+
+  {{ with $img }}
+    {{ $filename := print "/twitter/media/opengraph/" $.ctx.id_str }}
+    {{/* Image */}}
+    {{- partial "tweet/_image" (dict
+      "class"    "card-thumbnail"
+      "url"      .url
+      "formats"  $formats
+      "filename" $filename
+      "loading"  "lazy"
+      "width"    .width
+      "height"   .height
+      "alt"      ""
+      )
+    -}}
+  {{ else }}
+    {{/* SVG Placeholder */}}
+    <div class="card-no-image">
+      {{/*  Document Icon SVG  */}}
+      <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true" fill="currentColor" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"> <g> <path d="M14 11.25H6c-.414 0-.75.336-.75.75s.336.75.75.75h8c.414 0 .75-.336.75-.75s-.336-.75-.75-.75zm0-4H6c-.414 0-.75.336-.75.75s.336.75.75.75h8c.414 0 .75-.336.75-.75s-.336-.75-.75-.75zm-3.25 8H6c-.414 0-.75.336-.75.75s.336.75.75.75h4.75c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"></path> <path d="M21.5 11.25h-3.25v-7C18.25 3.01 17.24 2 16 2H4C2.76 2 1.75 3.01 1.75 4.25v15.5C1.75 20.99 2.76 22 4 22h15.5c1.517 0 2.75-1.233 2.75-2.75V12c0-.414-.336-.75-.75-.75zm-18.25 8.5V4.25c0-.413.337-.75.75-.75h12c.413 0 .75.337.75.75v15c0 .452.12.873.315 1.25H4c-.413 0-.75-.337-.75-.75zm16.25.75c-.69 0-1.25-.56-1.25-1.25v-6.5h2.5v6.5c0 .69-.56 1.25-1.25 1.25z"></path></g></svg>
+    </div>
+  {{ end }}
+
+  {{/* Text Content */}}
+  <div class="card-content">
+    {{ with .binding_values }}
+      {{ if .vanity_url }}
+        <div class="vanity-url">{{ .vanity_url.string_value }}</div>
+      {{ end }}
+
+      {{ if .title }}
+        <div class="title {{ if not .description }}title-2{{ end }}">
+          <a href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+            <span>{{ .title.string_value }}</span>
+            <div class="overlay" aria-hidden="true"></div>
+          </a>
+        </div>
+      {{ end }}
+
+      {{ if .description }}
+        <p class="description">{{ .description.string_value }}</p>
+      {{ end }}
+
+    {{ end }}
+  </div>
+</section>
