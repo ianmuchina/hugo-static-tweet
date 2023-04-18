@@ -1,5 +1,4 @@
 {
-  "name": "hugo-tweet",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "hugo-extended": "^0.111.3",
