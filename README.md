@@ -7,5 +7,6 @@ Hugo theme component to display static tweets. Supports most non-ad features
 ## Run example locally
 
 ```sh
-hugo server --source exampleSite/ --themesDir ../..
+pnpm install
+pnpm dev
 ```
