@@ -1,13 +1,11 @@
 ---
-title: Invalid Tweets
-description: Tweets showing bugs
+title: "Edge Cases"
+description: Ads/bugs or just complex stuff
 date: 2022-06-01
-draft: true
+draft: false
 ---
 
-# emojis
-
-{{<tweet id="1532341208097472513">}} {{<tweet id="1481308471622516738">}} {{<tweet id="1535220315986374656">}}
+ {{<tweet id="1535220315986374656">}}
 
 {{<tweet id="1509010532652699652">}}
 

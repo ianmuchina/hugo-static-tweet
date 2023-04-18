@@ -1,1 +1,1 @@
-hugo server --themesDir ../..
+simple theme to test the site

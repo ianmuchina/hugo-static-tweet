@@ -1,0 +1,17 @@
+{{- define "main" -}}
+  <main>
+    <header>
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </header>
+    <h2>Posts</h2>
+    {{- range .Site.RegularPages.ByDate.Reverse -}}
+      <h3>
+        <a href="{{ .RelPermalink }}">
+          {{- .Title -}}
+        </a>
+      </h3>
+      <p>{{ .Description }}</p>
+    {{- end -}}
+  </main>
+{{- end }}

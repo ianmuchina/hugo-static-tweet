@@ -29,7 +29,8 @@
   {{ end }}
 
   {{ with $img }}
-    {{ $filename := print "/twitter/media/opengraph/" $.ctx.id_str }}
+  
+    {{ $filename := (print "/twitter/media/opengraph/" (md5 .url)) }}
     {{/* Image */}}
     {{- partial "tweet/_image" (dict
       "class"    "card-thumbnail"

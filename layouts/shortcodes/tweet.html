@@ -7,6 +7,6 @@
 {{/* Fetch Remote Data */}}
 {{ $cdn := partial "tweet/api_cdnTweet" (dict "id" $id) }}
 
-{{ with $cdn.id_str }}
+{{ if $cdn.id_str }}
   {{ partial "tweet/tweet" (dict "ctx" $cdn "mode" "focus") }}
 {{ end }}

@@ -1,7 +1,8 @@
 ---
-title: card_name
+title: Wontfix:Cards
+description: Cards with bugs. Mostly ads
 date: 2022-05-01
-draft: true
+draft: false
 ---
 
 {{<tweet id="1537572070845988864">}}

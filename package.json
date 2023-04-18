@@ -16,7 +16,7 @@
     "fmt-check": "prettier --check .",
     "lint": "stylelint **/*.scss",
     "dev": "hugo server --source exampleSite/ --themesDir ../..",
-    "build": "hugo",
+    "build": "hugo --source exampleSite/ --themesDir ../..",
     "build-drafts": "hugo -D"
   },
   "stylelint": {

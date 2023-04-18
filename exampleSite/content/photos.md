@@ -1,34 +1,33 @@
 ---
-title: Pictures
-description: Tweets with photos
-date: 2022-04-01
-draft: true
+title: Images
+description: Tweets with pictures
+date: 2023-04-01
+draft: false
 ---
 
-<!-- 1 -->
-<!-- Wide -->
+TODO: Tagged people, Geotagging
+
+Wide
 
 {{<tweet id="1408567720887545857">}}
 
-<!-- too tall -->
-<!-- landscape -->
+Portrait
 
-{{<tweet id="930807314705256450">}} {{<tweet id="1408566204957003776">}}
+{{<tweet id="1408566204957003776">}}
 
-<!-- Square -->
+Square
 
 {{<tweet id="1166797273277222912">}}
 
-<!-- 2 -->
+2 Images
 
 {{<tweet id="1408575349286326272">}}
 
-<!-- 3 -->
+3 Images
 
 {{<tweet id="869317433814904832">}}
 
-<!-- 4 -->
+4 Images
 
 {{<tweet id="861627479294746624">}}
 
-TODO: Tagged people, Geotagging

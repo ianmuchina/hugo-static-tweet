@@ -14,24 +14,27 @@
   - alt:      image alt text
 */}}
 
-
 <picture>
   {{ $original := "" }}
   {{/* Download Image */}}
   {{- with resources.GetRemote .url -}}
     {{ $src := . | resources.Copy (print $.filename "." .MediaType.SubType) }}
     {{- with .Err -}}
-      {{/* Log Error if 404 */}}
-      {{/* Will fall back to remote url */}}
-      {{- warnf "%v" . -}}
+    {{/* Log Error if 404 */}}
+    {{- warnf "%v" . -}}
     {{- else -}}
+      {{ $original = $src.RelPermalink }}
       {{ range $.formats }}
-        {{ $resized := $src.Resize .options | resources.Copy (print $.filename .extension) }}
-        <source srcset="{{ $resized.RelPermalink }}" type="{{ $resized.MediaType }}" />
+        {{ with $src.Resize .options | resources.Copy (print $.filename .extension) }}
+          {{ with .Err }}
+            {{ warnf "%v" .Err }}
+          {{ else }}
+            <source  srcset="{{ .RelPermalink }}" type="{{ .MediaType }}" />
+          {{ end }}
+        {{ end }}
       {{ end }}
 
       {{/* Original Image */}}
-      {{ $original = $src.RelPermalink }}
     {{- end -}}
   {{- end -}}
   {{/* Fallback to Remote  Image + sizes */}}

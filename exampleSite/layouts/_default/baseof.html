@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
+    <title>
+      {{- if .IsHome -}}
+        {{- .Title -}}
+      {{- else -}}
+        {{- with .Title -}}
+          {{- printf "%s | " . -}}
+        {{- end -}}
+        {{- .Site.Title -}}
+      {{ end }}
+    </title>
+
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
+  </head>
+
+  <body class="light">
+    {{ block "main" . }}
+    {{ end }}
+  </body>
+</html>

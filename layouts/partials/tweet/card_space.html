@@ -1,6 +1,8 @@
 {{/* Displays a twitter Space */}}
+{{ . | jsonify }}
+{{/*  {{ partial "twitter/api_AudioSpaceById.html" . }}  */}}
 
-{{ $data := $data.Content | transform.Unmarshal }}
+{{/*  {{ $data := $data.Content | transform.Unmarshal }}
 {{ $metadata := $data.data.audioSpace.metadata }}
 
 {{ with $metadata }}
@@ -33,8 +35,8 @@
   </article>
 {{ else }}
   {{/* Space is unavailable */}}
-  <article class="spaces-card unavailable">
+  {{/*  <article class="spaces-card unavailable">
     <div class="spaces-meta">Spaces</div>
     <span class="spaces-title">Details not available</span>
   </article>
-{{ end }}
+{{ end }}  */}}  
