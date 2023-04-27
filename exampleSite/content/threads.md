@@ -15,15 +15,15 @@ Simple tweet
   
 Thread  with an `end` param only
 ```html
-{{</*tw-thread end="1455953461300785159"*/>}}
+{{</*thread end="1455953461300785159"*/>}}
 ```
 
-{{<tw-thread end="1455953461300785159">}}
+{{<thread end="1455953461300785159">}}
 
 
 Thread with both `end` and `start` param
 ```html
-{{</*tw-thread start="1390192903197188096" end="1390198695241535488" */>}}
+{{</*thread start="1390192903197188096" end="1390198695241535488" */>}}
 ```
 
-{{<tw-thread start="1390192903197188096" end="1390198695241535488" >}}
+{{<thread start="1390192903197188096" end="1390198695241535488" >}}
