@@ -12,7 +12,6 @@
 </p>
 
 
-
 ## Demo
 - Live Url: [hugo-static-tweet.vercel.app/](https://hugo-static-tweet.vercel.app/)
 - Source: the `exampleSite/` folder
@@ -37,12 +36,11 @@
 - [ ] Hashflags
 - [ ] Profile pics with shapes
 - [ ] Affiliate Badges
-- [ ] Backup data to json file
+- [ ] Script to backup data to json file
 - [ ] CSS Preflight
 - [ ] Most Ads eg: 3d ads
 - [ ] Unified Cards
 - [ ] Broken threads
-
 
 ## Installation via hugo modules
 
@@ -116,10 +114,20 @@ Output
 
 ![](https://i.imgur.com/W0Wd4Fa.png)
 
-## Customizing the css
-TODO
+## Customization
+
+### Disable image optimization
+
+Add this to the page frontmatter to disable image optimization for tweets 
+in current page. Useful when the image optimization makes the image blurry.
+
+```
+params: optimizeImages: false
+```
+
+## Tasks
+- Support for manually optimized images & avif
 
 ## Bugs
-
 - The image conversion makes text images look bad. Need way of overriding
 - The css is not self contained.
