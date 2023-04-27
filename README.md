@@ -121,8 +121,9 @@ Output
 Add this to the page frontmatter to disable image optimization for tweets 
 in current page. Useful when the image optimization makes the image blurry.
 
-```
-params: optimizeImages: false
+```yaml
+params: 
+  optimizeImages: false
 ```
 
 ## Tasks
