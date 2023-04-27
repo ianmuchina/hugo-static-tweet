@@ -382,16 +382,9 @@ a.link:hover {
 }
 
 @media (max-width: 480px) {
-  .user-info .name span {
-    flex: 1;
-    max-width: 20ch;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .tweet .date-compact {
-    display: none;
+  .user-info {
+    display: flex;
+    flex-direction: column;
   }
 }
 

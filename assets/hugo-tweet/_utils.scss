@@ -25,3 +25,9 @@
   width: 1.5em;
   vertical-align: -20%;
 }
+
+.tw-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
