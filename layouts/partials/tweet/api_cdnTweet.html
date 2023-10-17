@@ -2,7 +2,7 @@
   No auth required
 */}}
 
-{{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id }}
+{{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id "&token=" .id }}
 {{ $data := dict }}
 
 {{ with resources.GetRemote $url (dict "method" "get") }}
