@@ -1,4 +1,5 @@
-{{ with getJSON "https://cdn.syndication.twimg.com/tweet-result?id=" .id }}
+{{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id "&token=" .id }}
+{{ with getJSON $url }}
   {{ if .parent }}
     {{ partial "tweet/threadreader" (dict "id" .parent.id_str "data" .data) }}
   {{ end }}
