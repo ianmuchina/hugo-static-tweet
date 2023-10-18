@@ -1,12 +1,12 @@
 <div class="promo_image_convo">
   {{ with .binding_values.promo_image.image_value }}
-  {{ $filename := replace .url "https://pbs.twimg.com/" "twiter/media/promo_images/"}}
-  {{ $filename := replace $filename "?format=jpg&name=orig" ""}}
-  {{ $filename := replace $filename "?format=png&name=orig" ""}}
-  {{ $filename := replace $filename "ad_img" "_ad_img_"}}
+    {{ $filename := replace .url "https://pbs.twimg.com/" "twiter/media/promo_images/" }}
+    {{ $filename := replace $filename "?format=jpg&name=orig" "" }}
+    {{ $filename := replace $filename "?format=png&name=orig" "" }}
+    {{ $filename := replace $filename "ad_img" "_ad_img_" }}
 
-  {{ $formats := (slice (dict "options"  (print .width "x" .height " webp q75") "extension" ".webp")) }}
-  {{- partial "tweet/_image" 
+    {{ $formats := (slice (dict "options"  (print .width "x" .height " webp q75") "extension" ".webp")) }}
+    {{- partial "tweet/_image"
       (dict
       "url"      .url
       "filename" (print $filename "rf")

@@ -11,27 +11,27 @@
   Faster & smaller embedded tweets for Hugo websites.  
 </p>
 
-
 ## Demo
+
 - Live Url: [hugo-static-tweet.vercel.app/](https://hugo-static-tweet.vercel.app/)
 - Source: the `exampleSite/` folder
+
 ## Screenshots
 
-
-| Dark Mode | Light Mode |
-| ----------------------------------------------------- | --------------------------------------------- |
+| Dark Mode                                      | Light Mode                                    |
+| ---------------------------------------------- | --------------------------------------------- |
 | ![light mode](https://i.imgur.com/elJLuwA.png) | ![dark mode](https://i.imgur.com/SyGmlUu.png) |
 
 ## Features
+
 - [x] Text + Emojis
 - [x] Images
 - [x] Videos
 - [x] Polls
 - [x] Quote tweets
 - [x] Opengraph Cards
-- [ ] Mixed Media
+- [ ] Mixed Media (Video & Images in tweet)
 - [ ] Twemoji
-- [ ] Most Twitter 2.0 Features
 - [ ] Private Use Area Glyphs
 - [ ] Hashflags
 - [ ] Profile pics with shapes
@@ -42,7 +42,9 @@
 - [ ] Unified Cards
 - [ ] Broken threads
 
-## Installation via hugo modules
+## Installation
+
+### Installation using hugo modules
 
 If you don't already have a `go.mod` file run this command
 
@@ -50,57 +52,60 @@ If you don't already have a `go.mod` file run this command
 hugo mod init github.com/user/project
 ```
 
-Then add the theme
+Then add the theme to your configuration file.
 
 ```yaml
 # config.yaml
 module:
   imports:
-  - path: github.com/ianmuchina/hugo-static-tweet
+    - path: github.com/ianmuchina/hugo-static-tweet
 ```
 
-### Installation via git submodules
+### Installation using git submodules
 
-If you don't have a `themes` folder, create one then clone
-this repo.
+If you don't have a `themes` folder, create one then clone this git repository.
 
 ```bash
-mkdir themes 
+mkdir themes
 cd themes
 git clone https://github.com/ianmuchina/hugo-static-tweet.git
 ```
 
-After that you can add the theme entries to your config file 
+After that you can add the theme to your config file
 
 ```yaml
 theme: hugo-static-tweet
 ```
 
-
 ## Usage
 
-Display tweet
+Display single tweet
 
 ```handlebars
 {{<tweet id="20">}}
 ```
+
 Output
 
 ![](https://i.imgur.com/OkzdGyp.png)
 
-Display a thread, requires an `end` id and an optional `start` id.
+Display a thread of tweets, requires an `end` id and an optional `start` id.
+
 ```handlebars
 {{<tw-thread end="1455953461300785159">}}
 ```
-Output 
+
+Output
 
 ![](https://i.imgur.com/SpWerrK.png)
 
 Display a thread within specific range
+
 ```handlebars
 {{<tw-thread start="1390192903197188096" end="1390198695241535488" >}}
 ```
-Output 
+
+Output
 
 ![](https://i.imgur.com/r4CAwtm.png)
 
@@ -118,17 +123,16 @@ Output
 
 ### Disable image optimization
 
-Add this to the page frontmatter to disable image optimization for tweets 
-in current page. Useful when the image optimization makes the image blurry.
+Add this to the page/post frontmatter to disable image optimization for tweets in current page. Useful when the image
+optimization makes the image blurry.
 
 ```yaml
-params: 
+## post.md
+params:
   optimizeImages: false
 ```
 
 ## Tasks
-- Support for manually optimized images & avif
 
-## Bugs
-- The image conversion makes text images look bad. Need way of overriding
-- The css is not self contained.
+- Support for manually optimized images & avif
+- Document Styling

@@ -4,7 +4,7 @@
 
 {{/* <!--  Fetch Data from GraphQL API. Only necessary for RT Count --> */}}
 {{ $json := partial "tweet/api_TweetResultByRestId" (dict "id" .ctx.id_str) }}
-{{ $rt_count := $json.data.tweetResult.result.legacy.retweet_count}}
+{{ $rt_count := $json.data.tweetResult.result.legacy.retweet_count }}
 
 {{ $link := print "https://twitter.com/" .ctx.user.screen_name "/status/" .ctx.id_str }}
 
@@ -43,7 +43,7 @@
 
     {{/* Retweet Count */}}
 
-  {{ partial "tweet/_compact" $rt_count }}
+    {{ partial "tweet/_compact" $rt_count }}
 
   </a>
 

@@ -7,7 +7,6 @@ draft: false
 
 Spaces Recording
 
-
 {{<tweet id="1525174776683274245">}}
 
 {{<tweet id="1645940903444377602">}}

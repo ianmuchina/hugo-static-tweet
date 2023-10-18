@@ -1,6 +1,6 @@
 on:
   push:
-  workflow_dispatch:     # Manual Input
+  workflow_dispatch: # Manual Input
   schedule:
     - cron: "23 1 * * 4" # 01:23 every Thursday
 jobs:

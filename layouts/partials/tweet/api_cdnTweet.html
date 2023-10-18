@@ -2,7 +2,7 @@
   No auth required
 */}}
 
-{{/* <!-- NOTE: token is not verified  could be in the future. Using the tweet id for now -->*/}}
+{{/* <!-- NOTE: token is not verified  could be in the future. Using the tweet id for now --> */}}
 {{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id "&token=" .id }}
 {{ $data := dict }}
 

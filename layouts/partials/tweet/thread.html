@@ -2,7 +2,7 @@
 {{ $url := print "https://cdn.syndication.twimg.com/tweet-result?id=" .id "&token=" .id }}
 
 {{ with getJSON $url }}
-{{ if and .parent (ne $start .id_str) }}
+  {{ if and .parent (ne $start .id_str) }}
     {{ partial "tweet/thread"
       (dict "id" .parent.id_str "data" .data "start" $start)
     }}
