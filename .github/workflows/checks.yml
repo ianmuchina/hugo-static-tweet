@@ -1,0 +1,12 @@
+on:
+  push:
+  workflow_dispatch:     # Manual Input
+  schedule:
+    - cron: "23 1 * * 4" # 01:23 every Thursday
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy Site
+        run: ./vercel-build.sh
