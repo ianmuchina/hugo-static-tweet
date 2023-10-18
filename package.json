@@ -1,14 +1,14 @@
 {
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "hugo-extended": "^0.111.3",
-    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.16",
+    "hugo-extended": "^0.119.0",
+    "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
-    "prettier": "^2.8.7",
-    "prettier-plugin-go-template": "^0.0.13",
-    "stylelint": "^15.4.0",
-    "stylelint-config-prettier-scss": "^0.0.1",
-    "stylelint-config-standard-scss": "^8.0.0"
+    "prettier": "^3.0.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^11.0.0"
   },
   "scripts": {
     "fmt": "prettier -w .",
