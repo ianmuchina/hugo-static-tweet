@@ -85,9 +85,13 @@ Display single tweet
 {{<tweet id="20">}}
 ```
 
-Output
 
-![](https://i.imgur.com/OkzdGyp.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/EliCMXv.png">
+  <img alt="Text changing depending on mode. Light: 'So light!' Dark: 'So dark!'" src="https://i.imgur.com/OkzdGyp.png">
+</picture>
+
+---
 
 Display a thread of tweets, requires an `end` id and an optional `start` id.
 
@@ -97,7 +101,12 @@ Display a thread of tweets, requires an `end` id and an optional `start` id.
 
 Output
 
-![](https://i.imgur.com/SpWerrK.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/AYFcShI.png">
+  <img alt="" src="https://i.imgur.com/SpWerrK.png">
+</picture>
+
+---
 
 Display a thread within specific range
 
@@ -107,7 +116,11 @@ Display a thread within specific range
 
 Output
 
-![](https://i.imgur.com/r4CAwtm.png)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/Vna6Di5.png">
+  <img alt="" src="https://i.imgur.com/r4CAwtm.png">
+</picture>
 
 Display thread as text content, like the [threadreader](https://threadreaderapp.com/) app
 
@@ -117,7 +130,10 @@ Display thread as text content, like the [threadreader](https://threadreaderapp.
 
 Output
 
-![](https://i.imgur.com/W0Wd4Fa.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/M2nnnUC.png">
+  <img alt="" src="https://i.imgur.com/W0Wd4Fa.png">
+</picture>
 
 ## Customization
 
