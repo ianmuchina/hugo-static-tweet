@@ -4,6 +4,9 @@
 <p align="center">
   
   <img src="https://i.imgur.com/8rQXEt4.png">
+  
+  <img src="https://github.com/ianmuchina/hugo-static-tweet/actions/workflows/checks.yml/badge.svg">
+  
   <img src="https://img.shields.io/github/repo-size/ianmuchina/hugo-static-tweet?color=blue">
   <img src="https://img.shields.io/badge/License-MIT-green.svg">
   <br>
