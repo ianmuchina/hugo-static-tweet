@@ -39,8 +39,7 @@
     {{ $poster := .poster }}
     {{ $img := resources.GetRemote .poster }}
     {{ if not $img.Err }}
-      <!-- FIXME use actual extension -->
-      {{ $filename := print "/twitter/media/posters/" $.ctx.id_str ".mp4"}}
+      {{ $filename := print "/twitter/media/posters/" $.ctx.id_str "." $img.MediaType.SubType }}
       {{ $img = $img.Content | resources.FromString $filename }}
       {{ $poster = $img.RelPermalink }}
     {{ end }}
@@ -52,7 +51,8 @@
       {{ $src := .src }}
       {{/* a. Download video */}}
       {{ $vid := resources.GetRemote .src }}
-      {{ $filename := print "/twitter/media/video/" $.ctx.id_str "." $vid.MediaType.SubType }}
+      <!-- FIXME use actual extension -->
+      {{ $filename := print "/twitter/media/video/" $.ctx.id_str ".mp4" }}
       {{ $vid = $vid.Content | resources.FromString $filename }}
 
       {{/* b. Update video source if no errors in downloading */}}
