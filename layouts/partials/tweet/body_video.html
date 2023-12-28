@@ -51,9 +51,6 @@
       {{ $src := .src }}
       {{/* a. Download video */}}
       {{ $vid := resources.GetRemote .src }}
-      <!-- FIXME use actual extension -->
-      {{ $filename := print "/twitter/media/video/" $.ctx.id_str ".mp4" }}
-      {{ $vid = $vid.Content | resources.FromString $filename }}
 
       {{/* b. Update video source if no errors in downloading */}}
       {{ if not $vid.Err }}
