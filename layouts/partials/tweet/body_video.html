@@ -39,7 +39,8 @@
     {{ $poster := .poster }}
     {{ $img := resources.GetRemote .poster }}
     {{ if not $img.Err }}
-      {{ $filename := print "/twitter/media/posters/" $.ctx.id_str "." $img.MediaType.SubType }}
+      <!-- FIXME use actual extension -->
+      {{ $filename := print "/twitter/media/posters/" $.ctx.id_str ".mp4"}}
       {{ $img = $img.Content | resources.FromString $filename }}
       {{ $poster = $img.RelPermalink }}
     {{ end }}
