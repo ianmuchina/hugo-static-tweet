@@ -1,1 +1,2 @@
 theme: hugo-static-tweet
+timeout: 120s
